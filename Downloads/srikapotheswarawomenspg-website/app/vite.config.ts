@@ -4,16 +4,11 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import { inspectAttr } from 'kimi-plugin-inspect-react'
 
-const isDev = process.env.NODE_ENV !== "production";
-
-const devPlugins = isDev
-  ? [await import("@hono/vite-dev-server").then(m => m.default({ entry: "api/boot.ts", exclude: [/^\/(?!api\/).*$/] }))]
-  : [];
-
 export default defineConfig({
   plugins: [
-    ...devPlugins,
-    inspectAttr(), react()],
+    inspectAttr(),
+    react(),
+  ],
   server: {
     port: 3000,
   },
@@ -30,4 +25,4 @@ export default defineConfig({
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
   },
-});
+})
