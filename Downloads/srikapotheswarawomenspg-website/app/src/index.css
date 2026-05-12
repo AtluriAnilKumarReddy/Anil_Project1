@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-warm-ivory text-warm-brown font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply font-body text-[11px] font-medium uppercase tracking-[0.15em] text-warm-taupe;
+  }
+
+  .heading-display {
+    @apply font-display text-deep-saffron leading-[1.05];
+    font-size: clamp(36px, 4vw, 56px);
+  }
+
+  .heading-hero {
+    @apply font-display text-deep-saffron leading-[1.05];
+    font-size: clamp(48px, 7vw, 96px);
+  }
+
+  .nav-link {
+    @apply relative font-body text-[11px] font-medium uppercase tracking-[0.1em] text-warm-taupe transition-colors duration-300 hover:text-deep-saffron;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-[1px] w-0 bg-deep-saffron transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .will-change-transform {
+    will-change: transform, opacity;
+  }
+}
+
+/* Cursor styles */
+.cursor {
+  @apply fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999];
+  background: #D84315;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
